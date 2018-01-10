@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppService {
   http: Http;
-  holiday: {name: string, date: string};
+  holiday: Holiday = {};
 
   constructor(http: Http) {
     this.http = http;
@@ -23,14 +23,13 @@ export class AppService {
      return holiday;
     })
     .subscribe((data) => {
-      // data.holidays.forEach(day => {
-      //   const date = new Date(day.date),
-      //     formatedDate = ('0' + date.getDate()).slice(-2) + '.' +
-      //       ('0' + (date.getMonth() + 1)).slice(-2) + '.' + date.getFullYear();
-      //       console.log(formatedDate);
-      // });
-      return this.holiday = data;
+      console.log(this.holiday);
+      return this.holiday = data[0];
     });
   }
 
+}
+interface Holiday {
+  name ?: string;
+  date ?: string;
 }

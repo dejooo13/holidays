@@ -79,7 +79,7 @@ export class HolidaysComponent implements OnInit {
   ];
 
   appService: AppService;
-  holiday: {name: string, date: string};
+  holiday: Holiday = {};
 
   constructor(appService: AppService) {
     this.appService = appService;
@@ -94,9 +94,14 @@ export class HolidaysComponent implements OnInit {
      m = subForm.value.month;
     this.appService.getHolidays(count, y, m);
     this.holiday = this.appService.holiday;
+    console.log(this.holiday);
   }
 
 }
 
+interface Holiday {
+  name ?: string;
+  date ?: string;
+}
 
 
