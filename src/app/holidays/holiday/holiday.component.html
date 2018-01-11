@@ -1,6 +1,8 @@
-<h1 class="holiday">Holidays:</h1>
+<div id="output">
+  <h1 class="holiday">Holidays:</h1>
 
-<ul class='text-left'>
-  <li>Name:</li>
-  <li>Date:</li>
-</ul>
+  <ul *ngFor="let holy of holiday" class='text-left'>
+    <li>Name: {{holy?.name}}</li>
+    <li>Date: {{holy?.date}}</li>
+  </ul>
+</div>

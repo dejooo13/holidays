@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AppService {
   http: Http;
-  holiday: Holiday = {};
+  lat = 51.678418;
+  long = 7.809007;
+  holiday: Holiday[] = [];
+ // holiday: Observable<Holiday[]>;
+ weather: Weather[] = [];
 
   constructor(http: Http) {
     this.http = http;
@@ -23,8 +28,18 @@ export class AppService {
      return holiday;
     })
     .subscribe((data) => {
-      console.log(this.holiday);
-      return this.holiday = data[0];
+      return this.holiday = data;
+    });
+  }
+
+  getWeather(c) {
+    this.http.get(`https://api.darksky.net/forecast/2a9be1bce05107a78636317c85e6484f/${c}?units=si`)
+    .map((res: Response) => {
+      const data = res.json(),
+            weathers = data.currently;
+      return weathers;
+    }).subscribe((data) => {
+       return this.weather = data;
     });
   }
 
@@ -33,3 +48,12 @@ interface Holiday {
   name ?: string;
   date ?: string;
 }
+interface Weather {
+  temperature ?: string;
+  humiditydate ?: string;
+  pressure ?: string;
+  windSpeed ?: string;
+  precipType ?: string;
+  summary ?: string;
+}
+

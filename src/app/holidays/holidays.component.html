@@ -28,16 +28,15 @@
       </div>
       <div class="row my-5">
         <div class="col-md-12 text-center">
-          <button class="btn btn-primary" type="submit">Get Holidays</button>
+          <button id="getText" class="btn" type="submit">Get Holidays</button>
         </div>
       </div>
     </form>
-    <p>{{holiday?.name}}</p>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12 text-center">
-      <app-holiday></app-holiday>
+      <app-holiday [holiday]="holiday" *ngIf="holiday"></app-holiday>
 
   </div>
 </div>

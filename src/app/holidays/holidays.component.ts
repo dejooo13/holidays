@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { AppService } from '../app.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-holidays',
@@ -79,7 +80,8 @@ export class HolidaysComponent implements OnInit {
   ];
 
   appService: AppService;
-  holiday: Holiday = {};
+   holiday: Holiday[] = [];
+ // holiday: Observable<Holiday[]>;
 
   constructor(appService: AppService) {
     this.appService = appService;

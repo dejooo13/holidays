@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppService } from '../../app.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { AppService } from '../../app.service';
 })
 export class HolidayComponent implements OnInit {
   appService: AppService;
+  @Input() holiday;
 
   constructor(appService: AppService) {
     this.appService = appService;

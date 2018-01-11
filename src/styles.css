@@ -133,6 +133,7 @@ font-family: 'Lobster', cursive;
 color: #fff;
 }
 #output ul {
+  margin: 10px 5px;
 display: inline-block;
 -webkit-box-sizing:border-box;
    -moz-box-sizing:border-box;

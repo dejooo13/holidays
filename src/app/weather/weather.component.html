@@ -1,3 +1,15 @@
-<p>
-  weather works!
-</p>
+<div id="sunOutput">
+  <h1 class="py-5 text-center">Click on map to see it's weather:</h1>
+  <div class="weather py-5 text-center">
+    <canvas id="weatherIcon" width="80" height="80"></canvas>
+    <p>Temperature: <br> {{weather.temperature}}&#8451;</p>
+    <p>Humidity: <br> {{weather.humidity}}%</p>
+    <p>Preasure: <br> {{weather.pressure}}mbar</p>
+    <p>Wind speed: <br> {{weather.windSpeed}}m/s</p>
+    <p>Precipitation type: <br> {{weather.precipType}}</p>
+    <p>Summary: <br> {{weather.summary}}</p>
+  </div>
+</div>
+<agm-map [latitude]="lat" [longitude]="long" (mapClick)="onChoosenLocation($event)">
+  <agm-marker *ngIf="locationChoosen" [latitude]="lat" [longitude]="long"></agm-marker>
+</agm-map>

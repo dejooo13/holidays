@@ -9,6 +9,7 @@ import { HolidaysComponent } from './holidays/holidays.component';
 import { WeatherComponent } from './weather/weather.component';
 import { AppService } from './app.service';
 import { HolidayComponent } from './holidays/holiday/holiday.component';
+import { AgmCoreModule } from '@agm/core';
 
 const routes: Routes = [
   { path: 'holidays', component: HolidaysComponent},
@@ -26,7 +27,10 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB1pTWbRIwzh9m5ZSVk-FL9CZwfXd1QaPI'
+    })
   ],
   providers: [
     AppService
