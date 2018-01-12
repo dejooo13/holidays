@@ -11,7 +11,7 @@ export class WeatherComponent implements OnInit {
   lat: number;
   long: number;
   locationChoosen = false;
-  weather = [];
+  weather: Weather[] = [];
 
   constructor(appservice: AppService) {
     this.appService = appservice;
@@ -32,4 +32,13 @@ export class WeatherComponent implements OnInit {
     console.log(this.weather);
   }
 
+}
+interface Weather {
+  temperature ?: number;
+  humidity ?: number;
+  pressure ?: number;
+  windSpeed ?: number;
+  precipType ?: string;
+  summary ?: string;
+  icon ?: string;
 }
