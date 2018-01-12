@@ -81,7 +81,6 @@ export class HolidaysComponent implements OnInit {
 
   appService: AppService;
    holiday: Holiday[] = [];
- // holiday: Observable<Holiday[]>;
 
   constructor(appService: AppService) {
     this.appService = appService;
@@ -94,9 +93,9 @@ export class HolidaysComponent implements OnInit {
     const count = subForm.value.country,
      y = subForm.value.year,
      m = subForm.value.month;
-    this.appService.getHolidays(count, y, m);
-    this.holiday = this.appService.holiday;
-    console.log(this.holiday);
+    this.appService.getHolidays(count, y, m).subscribe((data) => {
+      return this.holiday = data;
+    });
   }
 
 }

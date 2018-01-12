@@ -9,7 +9,6 @@ export class AppService {
   lat = 51.678418;
   long = 7.809007;
   holiday: Holiday[] = [];
- // holiday: Observable<Holiday[]>;
  weather: Weather[] = [];
 
   constructor(http: Http) {
@@ -17,7 +16,7 @@ export class AppService {
    }
 
   getHolidays(count, y, m) {
-    this.http.get(`https://holidayapi.com/v1/holidays?
+   return this.http.get(`https://holidayapi.com/v1/holidays?
     key=8d45b0ca-8dee-4818-94f9-79c392f526d7&country=${count}&year=${y}&month=${m}`)
     .map((res: Response) => {
       const data = res.json(),
@@ -26,9 +25,6 @@ export class AppService {
               return {name: day.name, date: day.date};
             });
      return holiday;
-    })
-    .subscribe((data) => {
-      return this.holiday = data;
     });
   }
 
@@ -39,6 +35,7 @@ export class AppService {
             weathers = data.currently;
       return weathers;
     }).subscribe((data) => {
+      console.log(data);
        return this.weather = data;
     });
   }
@@ -49,11 +46,12 @@ interface Holiday {
   date ?: string;
 }
 interface Weather {
-  temperature ?: string;
-  humiditydate ?: string;
-  pressure ?: string;
-  windSpeed ?: string;
+  temperature ?: number;
+  humidity ?: number;
+  pressure ?: number;
+  windSpeed ?: number;
   precipType ?: string;
   summary ?: string;
+  icon: string;
 }
 
